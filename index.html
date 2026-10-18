@@ -762,6 +762,123 @@ section:not(.hero) { padding: 90px 0; }
   border-bottom: 1px solid rgba(31,61,43,0.08);
 }
 
+
+/* ==================== 가독성 보정 ==================== */
+html { scroll-padding-top: 76px; }
+body { line-height: 1.7; word-break: keep-all; overflow-wrap: break-word; }
+h1, h2, h3, h4 { word-break: keep-all; text-wrap: balance; line-height: 1.3; }
+p, li { text-wrap: pretty; }
+section { scroll-margin-top: 76px; }
+
+/* 헤더: 로고를 잘라낸 이미지로 크게 */
+.logo-img { height: 46px; width: auto; }
+
+/* 본문 톤: 갈색 대신 진한 잉크색으로, 크기는 한 단계 키움 */
+.section-sub { color: #4a4438; font-size: 1.05rem; line-height: 1.8; max-width: 640px; margin-bottom: 44px; }
+.about-lead { color: #2f2f2f; font-size: 1.05rem; line-height: 1.9; margin-bottom: 18px; max-width: 34em; }
+.service-card p, .principle-card p, .partner-card p { color: #4a4438; font-size: 0.95rem; line-height: 1.7; }
+.section-title { line-height: 1.3; }
+.section-eyebrow { font-size: 0.85rem; }
+
+/* 히어로: 사진 위 글씨가 읽히도록 어두운 막 + 크기 조정 */
+.hero-copy { text-shadow: none; }
+.slide[data-slide="0"]::after {
+  content: ""; position: absolute; inset: 0; z-index: 4; pointer-events: none;
+  background: linear-gradient(90deg, rgba(10,28,18,.72) 0%, rgba(10,28,18,.45) 42%, rgba(10,28,18,0) 72%);
+}
+.hero h1 { text-shadow: 0 2px 18px rgba(0,0,0,.35); }
+.hero-desc { font-size: 1.1rem; line-height: 1.75; opacity: 1; max-width: 30em; text-shadow: 0 1px 12px rgba(0,0,0,.45); }
+.eyebrow { background: rgba(10,28,18,.45); border-color: rgba(255,255,255,.55); }
+.btn-ghost { background: rgba(10,28,18,.35); }
+
+/* 서비스 카드: 4열 고정, 마지막 칸은 견적 CTA */
+.service-grid { grid-template-columns: repeat(4, 1fr); }
+.service-card p { margin-top: 2px; }
+.service-cta { background: var(--forest); border-color: var(--forest); display: flex; flex-direction: column; }
+.service-cta .service-num, .service-cta h3 { color: #fff; }
+.service-cta p { color: rgba(255,255,255,.85); }
+.service-cta-link { margin-top: auto; padding-top: 18px; color: var(--orange); font-weight: 800; font-size: .95rem; }
+.service-cta:hover { background: var(--forest-dark); }
+
+/* 회사소개: 세로로 너무 긴 사진을 적당한 비율로 */
+.about-grid { gap: 56px; align-items: center; }
+.about-media { aspect-ratio: 4 / 5; max-height: 540px; min-height: 0; justify-self: end; width: 100%; }
+.about-media img { height: 100%; min-height: 0; object-position: 50% 30%; }
+.principle-card h4 { font-size: 1.2rem; }
+
+/* 상담 폼: 칸이 박스 밖으로 삐져나오지 않게 */
+.consult-form, .form-row { min-width: 0; }
+.consult-form input, .consult-form select, .consult-form textarea { width: 100%; min-width: 0; max-width: 100%; box-sizing: border-box; font-size: 1rem; }
+.form-row label { font-size: .92rem; }
+.form-agree { font-size: .88rem; line-height: 1.6; }
+
+/* 푸터 */
+.footer-info p { font-size: .92rem; line-height: 1.75; opacity: .92; margin-bottom: 2px; }
+.footer-muted { opacity: .65 !important; }
+
+@media (max-width: 1024px) {
+  .service-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-media { justify-self: stretch; max-height: 460px; aspect-ratio: 4 / 3; }
+}
+
+@media (max-width: 768px) {
+  body { font-size: 16px; }
+  .container { padding: 0 20px; }
+  section:not(.hero) { padding: 56px 0; }
+  .logo-img { height: 38px; }
+
+  /* 히어로: 글은 아래쪽에 모으고 아래에서 위로 어두운 막 */
+  .slide { align-items: flex-end; }
+  .slide[data-slide="0"]::after {
+    background: linear-gradient(0deg, rgba(10,28,18,.88) 0%, rgba(10,28,18,.6) 45%, rgba(10,28,18,0) 80%);
+  }
+  .hero-copy { margin: 0 auto; max-width: 100%; width: 100%; padding: 0 20px 76px; box-sizing: border-box; }
+  .hero-copy-center { padding-bottom: 76px; }
+  .eyebrow { font-size: .72rem; letter-spacing: .04em; padding: 5px 12px; margin-bottom: 14px; white-space: normal; }
+  .hero h1 { font-size: clamp(1.9rem, 8vw, 2.4rem); margin-bottom: 12px; }
+  .hero-desc { font-size: 1rem; margin-bottom: 20px; }
+  .hero-buttons { flex-direction: column; gap: 10px; }
+  .hero-buttons .btn { width: 100%; padding: 14px 20px; }
+  .stats-grid { gap: 22px 12px; }
+
+  .section-sub { font-size: 1rem; margin-bottom: 32px; }
+  .about-lead { font-size: 1rem; line-height: 1.85; }
+  .about-grid { gap: 28px; margin: 32px 0 44px; }
+  .about-media { aspect-ratio: 4 / 3; }
+
+  /* 서비스 카드: 번호와 제목을 한 줄에, 낮게 */
+  .service-grid { grid-template-columns: 1fr; gap: 12px; }
+  .service-card { padding: 20px 22px; }
+  .service-card .service-num { display: inline-block; margin: 0 10px 0 0; }
+  .service-card h3 { display: inline-block; font-size: 1.15rem; margin-bottom: 6px; }
+  .service-card p { font-size: .95rem; }
+  .service-cta .service-cta-link { padding-top: 12px; }
+
+  .principle-grid { gap: 12px; margin-bottom: 40px; }
+  .principle-card { padding: 24px 22px; }
+
+  .consult-form { padding: 22px 18px; gap: 16px; }
+  .contact-box { padding: 24px 22px; gap: 10px; }
+  .contact-phone { font-size: 1.7rem; }
+  .footer-sns { margin-top: 16px; }
+}
+
+/* 회사소개: 제목·소개글·본문을 왼쪽 한 덩어리로, 사진은 오른쪽 */
+.about-grid { align-items: center; margin: 0 0 64px; }
+.about-sub { margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid rgba(31,61,43,.14); }
+.about-story-title { font-size: 1.15rem; font-weight: 800; color: var(--forest); margin: 0 0 14px; }
+.about-media { aspect-ratio: 4 / 5; max-height: 600px; }
+.services .section-title { margin-bottom: 36px; }
+@media (max-width: 1024px) {
+  .about-grid { margin-bottom: 44px; }
+}
+@media (max-width: 768px) {
+  .about-sub { margin-bottom: 22px; padding-bottom: 22px; }
+  .services .section-title { margin-bottom: 24px; }
+}
+
+.consult-form input[type="checkbox"] { width: 20px; height: 20px; min-width: 20px; flex: none; margin-top: 2px; padding: 0; }
+.form-agree { align-items: flex-start; gap: 10px; }
 </style>
 </head>
 <body>
@@ -1010,22 +1127,18 @@ document.addEventListener('DOMContentLoaded', () => {
 <!-- ===== 회사소개 ===== -->
 <section class="about-hero" id="about">
   <div class="container">
-    <p class="section-eyebrow">ABOUT US</p>
-    <h2 class="section-title">가지 하나에도<br>이유가 있습니다</h2>
-    <p class="section-sub">나무이발사는 우리동네종합관리(주) 그룹의 조경 전문 계열사로, 예초부터 식재까지 조경 공사 전 과정을 책임집니다.</p>
-
     <div class="about-grid">
       <div class="about-text">
-        <p class="section-eyebrow section-eyebrow-muted">OUR STORY</p>
-        <h3>왜 나무이발사인가</h3>
+        <p class="section-eyebrow">ABOUT US</p>
+        <h2 class="section-title">가지 하나에도<br>이유가 있습니다</h2>
+        <p class="section-sub about-sub">나무이발사는 우리동네종합관리(주) 그룹의 조경 전문 계열사로, 예초부터 식재까지 조경 공사 전 과정을 책임집니다.</p>
+        <h3 class="about-story-title">왜 나무이발사인가</h3>
         <p class="about-lead">
-          같은 나무라도 어떻게 다듬느냐에 따라 공간의 인상이 달라집니다.<br>
-          나무이발사는 수종별 생장 특성과 현장 환경을 먼저 살핀 뒤,<br>
-          예초·전지·전정·식재까지 필요한 만큼만 정확하게 시공합니다.
+          같은 나무라도 어떻게 다듬느냐에 따라 공간의 인상이 달라집니다.
+          나무이발사는 수종별 생장 특성과 현장 환경을 먼저 살핀 뒤, 예초·전지·전정·식재까지 필요한 만큼만 정확하게 시공합니다.
         </p>
         <p class="about-lead">
-          기업체·관공서의 정기관리 계약부터 개인주택 단발 시공까지,<br>
-          현장에서 쌓아온 경험을 바탕으로 합리적인 조건을 안내합니다.
+          기업체·관공서의 정기관리 계약부터 개인주택 단발 시공까지, 현장에서 쌓아온 경험을 바탕으로 합리적인 조건을 안내합니다.
         </p>
       </div>
       <div class="about-media">
@@ -1094,6 +1207,12 @@ document.addEventListener('DOMContentLoaded', () => {
         <h3>병충해 방제작업</h3>
         <p>병해충을 사전에 예방하고 방제해 수목의 건강을 지킵니다.</p>
       </div>
+      <a href="#contact" class="service-card service-cta">
+        <span class="service-num">문의</span>
+        <h3>무료 방문견적</h3>
+        <p>현장을 직접 보고 작업 범위와 비용을 안내해 드립니다.</p>
+        <span class="service-cta-link">상담 신청하기 →</span>
+      </a>
     </div>
   </div>
 </section>
