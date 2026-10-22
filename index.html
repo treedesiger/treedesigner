@@ -1348,32 +1348,33 @@ document.addEventListener('DOMContentLoaded', () => {
       <p class="section-sub">아래 정보를 남겨주시면 확인 후 순차적으로 연락드립니다.</p>
 
       <form id="consultForm" class="consult-form"
-            action="https://docs.google.com/forms/d/e/YOUR_GOOGLE_FORM_ID/formResponse"
+            action="https://docs.google.com/forms/d/e/1FAIpQLScUbNneYs6ENRt7tS5fdCSU5eXUXZ_nUS2MONEzngyt7NI5Ug/formResponse"
             method="POST" target="hidden_iframe">
         <div class="form-row">
           <label for="fName">이름</label>
-          <input type="text" id="fName" name="entry.111111111" placeholder="홍길동" required>
+          <input type="text" id="fName" name="entry.2005620554" placeholder="홍길동" required>
         </div>
         <div class="form-row">
           <label for="fPhone">연락처</label>
-          <input type="tel" id="fPhone" name="entry.222222222" placeholder="010-0000-0000" required>
+          <input type="tel" id="fPhone" name="entry.1166974658" placeholder="010-0000-0000" required>
         </div>
         <div class="form-row">
           <label for="fService">관심 서비스</label>
-          <select id="fService" name="entry.333333333">
-            <option value="예초/제초">예초/제초</option>
+          <select id="fService" name="entry.839337160">
+            <option value="예초/ 제초">예초/제초</option>
             <option value="전지">전지</option>
             <option value="전정">전정</option>
             <option value="화단공사">화단공사</option>
             <option value="정기 조경관리">정기 조경관리</option>
             <option value="식재작업">식재작업</option>
             <option value="병충해 방제작업">병충해 방제작업</option>
-            <option value="기타 문의">기타 문의</option>
+            <option value="__other_option__">기타 문의</option>
           </select>
+          <input type="hidden" name="entry.839337160.other_option_response" value="기타 문의">
         </div>
         <div class="form-row form-row-full">
           <label for="fMsg">문의 내용</label>
-          <textarea id="fMsg" name="entry.444444444" rows="4" placeholder="현장 위치, 희망 일정 등을 남겨주세요"></textarea>
+          <textarea id="fMsg" name="entry.1106212096" rows="4" placeholder="현장 위치, 희망 일정 등을 남겨주세요"></textarea>
         </div>
         <label class="form-agree">
           <input type="checkbox" required>
